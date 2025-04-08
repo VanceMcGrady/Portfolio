@@ -171,30 +171,63 @@ p {
   color: var(--secondary);
 }
 
-/* About Section */
+/* About Section with Banner */
 #about {
-  padding-top: 6rem; /* Increased top padding to account for the fixed header */
+  padding-top: 4rem; /* Restore some padding now that we have the banner as background */
+  padding-bottom: 4rem;
+  position: relative;
+  min-height: 500px; /* Set minimum height for the about section */
+  background-image: url("./assets/banner-image.jpeg");
+  background-size: cover;
+  background-position: center;
+  color: var(--light);
+  transition: min-height 0.4s ease-out;
 }
 
+#about.collapsed {
+  min-height: 300px; /* Smaller height when collapsed */
+}
+
+.banner-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(
+    15,
+    23,
+    42,
+    0.7
+  ); /* Dark overlay for better text readability */
+  z-index: 1;
+}
+
+#about .section-content {
+  position: relative;
+  z-index: 2; /* Place above the overlay */
+}
+
+#about h1,
 #about h2 {
-  margin-bottom: 0.5rem;
-  color: var(--accent);
-  font-weight: 500;
-}
-
-#about h2:after {
-  display: none;
+  color: var(--light);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 #about p {
-  font-size: 1.25rem;
-  margin-bottom: 2rem;
+  color: var(--light);
+  opacity: 0.9;
 }
 
-social-links {
-  display: flex;
-  gap: 1.5rem;
-  font-size: 1.25rem;
+#about .social-links a {
+  color: var(--light);
+  font-size: 1.5rem;
+  margin-right: 1rem;
+}
+
+#about .social-links a:hover {
+  color: var(--accent);
+  opacity: 1;
 }
 
 /* Skills Section */
@@ -440,5 +473,13 @@ footer {
 
   .projects-grid {
     grid-template-columns: 1fr;
+  }
+
+  #about {
+    height: auto; /* Adjust height for mobile */
+  }
+
+  .banner-overlay {
+    display: none; /* Remove overlay on mobile */
   }
 }

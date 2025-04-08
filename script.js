@@ -120,4 +120,29 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("scroll", revealOnScroll);
   // Initial check
   revealOnScroll();
+
+  // Banner collapse on scroll functionality
+  const aboutSection = document.getElementById("about");
+  let lastScrollTop = 0;
+
+  // Function to handle banner collapse/expand based on scroll position
+  function handleBannerOnScroll() {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+    // Collapse banner when scrolling down beyond 150px
+    if (scrollTop > 150) {
+      aboutSection.classList.add("collapsed");
+    } else {
+      // Expand banner when near the top of the page
+      aboutSection.classList.remove("collapsed");
+    }
+
+    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+  }
+
+  // Add scroll event listener
+  window.addEventListener("scroll", handleBannerOnScroll);
+
+  // Initial check for page load position
+  handleBannerOnScroll();
 });
