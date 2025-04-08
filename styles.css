@@ -354,6 +354,27 @@ footer {
   color: var(--secondary);
 }
 
+/* Typewriter Animation */
+.typewriter-container {
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+.cursor {
+  font-weight: 700;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
 /* Media Queries */
 @media (max-width: 768px) {
   h1 {

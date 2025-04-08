@@ -1,4 +1,50 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // Typewriter effect
+  const typewriterElement = document.getElementById("typewriter-text");
+  const phrases = [
+    "Building robust, scalable applications with elegant solutions.",
+    "Turning complex problems into simple solutions.",
+    "Creating modern web experiences that perform and delight.",
+    "Passionate about clean code and user-centric design.",
+  ];
+  let phraseIndex = 0;
+  let charIndex = 0;
+  let isDeleting = false;
+  let typingSpeed = 100;
+
+  function typeWriter() {
+    const currentPhrase = phrases[phraseIndex];
+
+    if (isDeleting) {
+      // Deleting text
+      typewriterElement.textContent = currentPhrase.substring(0, charIndex - 1);
+      charIndex--;
+      typingSpeed = 50; // Faster when deleting
+    } else {
+      // Typing text
+      typewriterElement.textContent = currentPhrase.substring(0, charIndex + 1);
+      charIndex++;
+      typingSpeed = 100; // Normal speed when typing
+    }
+
+    // If phrase is complete, wait and then delete
+    if (!isDeleting && charIndex === currentPhrase.length) {
+      isDeleting = true;
+      typingSpeed = 1000; // Pause at the end of the phrase
+    }
+    // If deletion is complete, move to next phrase
+    else if (isDeleting && charIndex === 0) {
+      isDeleting = false;
+      phraseIndex = (phraseIndex + 1) % phrases.length;
+      typingSpeed = 500; // Pause before typing next phrase
+    }
+
+    setTimeout(typeWriter, typingSpeed);
+  }
+
+  // Start the typewriter effect
+  typeWriter();
+
   // Mobile menu toggle
   const menuToggle = document.getElementById("menu-toggle");
   const navLinks = document.getElementById("nav-links");
