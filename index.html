@@ -3,15 +3,200 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="./styles.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
-    <title>Document</title>
+    <title>Vance McGrady | Senior Full Stack Engineer</title>
   </head>
   <body>
-    test
+    <header>
+      <nav>
+        <div class="logo">VM</div>
+        <ul id="nav-links">
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#skills" class="nav-link">Skills</a></li>
+          <li><a href="#projects" class="nav-link">Projects</a></li>
+          <li><a href="#experience" class="nav-link">Experience</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+        <div class="menu-toggle" id="menu-toggle">
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+        </div>
+      </nav>
+    </header>
+
+    <div class="container">
+      <section id="about" class="section">
+        <div class="section-content">
+          <h1>Vance McGrady</h1>
+          <h2>Senior Full Stack Engineer</h2>
+          <p>Building robust, scalable applications with elegant solutions.</p>
+          <div class="social-links">
+            <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="#" aria-label="LinkedIn"
+              ><i class="fab fa-linkedin"></i
+            ></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
+          </div>
+        </div>
+      </section>
+
+      <section id="skills" class="section">
+        <div class="section-content">
+          <h2>Skills</h2>
+          <div class="skills-container">
+            <div class="skill-category">
+              <h3>Frontend</h3>
+              <ul>
+                <li>JavaScript (ES6+)</li>
+                <li>React & Redux</li>
+                <li>TypeScript</li>
+                <li>HTML5 / CSS3</li>
+                <li>Next.js</li>
+              </ul>
+            </div>
+            <div class="skill-category">
+              <h3>Backend</h3>
+              <ul>
+                <li>Node.js / Express</li>
+                <li>Python / Django</li>
+                <li>Java / Spring</li>
+                <li>RESTful APIs</li>
+                <li>GraphQL</li>
+              </ul>
+            </div>
+            <div class="skill-category">
+              <h3>DevOps & Tools</h3>
+              <ul>
+                <li>AWS / GCP</li>
+                <li>Docker / Kubernetes</li>
+                <li>CI/CD Pipelines</li>
+                <li>Git / GitHub</li>
+                <li>Testing (Jest, Cypress)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects" class="section">
+        <div class="section-content">
+          <h2>Featured Projects</h2>
+          <div class="projects-grid">
+            <div class="project-card">
+              <div class="project-content">
+                <h3>Enterprise CRM Platform</h3>
+                <p>
+                  A full-featured customer relationship management system with
+                  analytics dashboard and ML-powered insights.
+                </p>
+                <p class="tech-stack">React • Node.js • MongoDB • AWS</p>
+                <div class="project-links">
+                  <a href="#" class="btn">View Project</a>
+                  <a href="#" aria-label="GitHub Repository"
+                    ><i class="fab fa-github"></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+            <div class="project-card">
+              <div class="project-content">
+                <h3>Fintech Payment Solution</h3>
+                <p>
+                  A secure, scalable payment processing platform handling 100K+
+                  transactions daily with 99.99% uptime.
+                </p>
+                <p class="tech-stack">
+                  TypeScript • Java • PostgreSQL • Kubernetes
+                </p>
+                <div class="project-links">
+                  <a href="#" class="btn">View Project</a>
+                  <a href="#" aria-label="GitHub Repository"
+                    ><i class="fab fa-github"></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+            <div class="project-card">
+              <div class="project-content">
+                <h3>Real-time Analytics Dashboard</h3>
+                <p>
+                  Interactive visualization platform processing terabytes of
+                  data for critical business insights.
+                </p>
+                <p class="tech-stack">Vue.js • Python • Redis • GraphQL</p>
+                <div class="project-links">
+                  <a href="#" class="btn">View Project</a>
+                  <a href="#" aria-label="GitHub Repository"
+                    ><i class="fab fa-github"></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="experience" class="section">
+        <div class="section-content">
+          <h2>Experience</h2>
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-date">2020 - Present</div>
+              <div class="timeline-content">
+                <h3>Senior Full Stack Engineer</h3>
+                <h4>Tech Innovations Inc.</h4>
+                <p>
+                  Leading development of enterprise SaaS solutions, mentoring
+                  junior developers, and implementing CI/CD automation.
+                </p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-date">2017 - 2020</div>
+              <div class="timeline-content">
+                <h3>Full Stack Developer</h3>
+                <h4>Digital Solutions Group</h4>
+                <p>
+                  Architected and built scalable web applications for finance
+                  and healthcare clients.
+                </p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-date">2015 - 2017</div>
+              <div class="timeline-content">
+                <h3>Frontend Developer</h3>
+                <h4>WebTech Co.</h4>
+                <p>
+                  Developed responsive web interfaces and contributed to core
+                  component libraries.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="section">
+        <div class="section-content">
+          <h2>Get In Touch</h2>
+          <p>I'm currently open to new opportunities and collaborations.</p>
+          <a href="mailto:contact@janedoe.dev" class="btn contact-btn"
+            >Contact Me</a
+          >
+        </div>
+      </section>
+
+      <footer>
+        <p>&copy; 2023 Jane Doe. All rights reserved.</p>
+      </footer>
+    </div>
   </body>
 </html>
-<script src="script.js"></script>
+<script src="./script.js"></script>
