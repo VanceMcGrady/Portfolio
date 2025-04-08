@@ -15,6 +15,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 60px; /* Alternative approach that works with more browsers */
 }
 
 body {
@@ -118,16 +119,18 @@ nav ul {
 }
 
 .section {
-  padding: 8rem 0;
-  min-height: 100vh;
+  padding: 4rem 0; /* Reduced from 8rem to 4rem */
+  min-height: auto; /* Changed from 100vh to auto */
   display: flex;
   flex-direction: column;
   justify-content: center;
+  scroll-margin-top: 60px; /* Add space for fixed header when scrolling to anchors */
 }
 
 .section-content {
   max-width: 800px;
   margin: 0 auto;
+  width: 100%; /* Ensure full width of the container */
 }
 
 h1 {
@@ -143,6 +146,8 @@ h2 {
   margin-bottom: 2rem;
   color: var(--primary);
   position: relative;
+  width: 100%; /* Ensure headers take full width */
+  text-align: left; /* Ensure left alignment consistently */
 }
 
 h2:after {
@@ -167,6 +172,10 @@ p {
 }
 
 /* About Section */
+#about {
+  padding-top: 6rem; /* Increased top padding to account for the fixed header */
+}
+
 #about h2 {
   margin-bottom: 0.5rem;
   color: var(--accent);
@@ -182,7 +191,7 @@ p {
   margin-bottom: 2rem;
 }
 
-.social-links {
+social-links {
   display: flex;
   gap: 1.5rem;
   font-size: 1.25rem;
@@ -190,9 +199,13 @@ p {
 
 /* Skills Section */
 .skills-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
+  display: flex; /* Changed from grid to flex */
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: space-between;
+  width: 100%; /* Ensure full width within the section-content */
+  flex: 1; /* Added flex grow */
+  min-width: 200px; /* Minimum width to ensure readability */
 }
 
 .skill-category {
@@ -201,6 +214,8 @@ p {
   border-radius: 8px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
   transition: var(--transition);
+  flex: 1; /* Added flex grow */
+  min-width: 200px; /* Minimum width to ensure readability */
 }
 
 .skill-category:hover {
@@ -228,6 +243,7 @@ p {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
+  width: 100%; /* Ensure full width within the section-content */
 }
 
 .project-card {
@@ -278,7 +294,7 @@ p {
 /* Experience Section */
 .timeline {
   position: relative;
-  padding-left: 2rem;
+  padding-left: 3rem; /* Increased from 2rem to 3rem */
 }
 
 .timeline::before {
@@ -309,7 +325,7 @@ p {
 .timeline-item:before {
   content: "";
   position: absolute;
-  left: -2rem;
+  left: -2.5rem; /* Changed from -2rem to -2.5rem */
   top: 0.5rem;
   width: 12px;
   height: 12px;
@@ -387,11 +403,21 @@ footer {
   }
 
   .section {
-    padding: 6rem 0;
+    padding: 3rem 0; /* Reduced from 6rem to 3rem for mobile */
   }
 
-  .projects-grid,
   .skills-container {
+    flex-direction: row; /* Keep horizontal layout on mobile */
+    overflow-x: auto; /* Allow horizontal scrolling if needed */
+    padding-bottom: 1rem; /* Space for scrollbar */
+  }
+
+  .skill-category {
+    flex: 0 0 auto; /* Don't grow, don't shrink, use specified width */
+    width: 220px; /* Fixed width for mobile */
+  }
+
+  .projects-grid {
     grid-template-columns: 1fr;
   }
 }
