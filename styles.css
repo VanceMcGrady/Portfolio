@@ -276,8 +276,9 @@ p {
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-auto-rows: 1fr; /* Force all rows to be the same height */
   gap: 2rem;
-  width: 100%; /* Ensure full width within the section-content */
+  width: 100%;
 }
 
 .project-card {
@@ -287,6 +288,8 @@ p {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
   transition: var(--transition);
   height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .project-card:hover {
@@ -295,34 +298,71 @@ p {
 }
 
 .project-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1; /* Make content take full height of card */
   padding: 1.5rem;
+  gap: 1rem; /* Consistent spacing between elements */
+}
+
+.project-content h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem; /* Consistent margin */
+  height: 3em; /* Fixed height for title, approximately 2-3 lines */
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.project-content > p:first-of-type {
+  flex-grow: 1; /* Allow description to grow and fill space */
+  margin-bottom: 1rem; /* Consistent margin */
 }
 
 .tech-stack {
   font-size: 0.9rem;
   color: var(--accent);
   font-weight: 500;
+  margin-top: auto; /* Push to bottom of flex container */
+  margin-bottom: 1rem;
 }
 
 .project-links {
   display: flex;
   align-items: center;
   gap: 1rem;
+  margin-top: auto; /* Ensure links are at the bottom */
 }
 
+/* Button Styling */
 .btn {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   background-color: var(--accent);
   color: white;
-  padding: 0.6rem 1.2rem;
-  border-radius: 4px;
-  font-weight: 500;
+  padding: 0.8rem 1.5rem;
+  border-radius: 6px;
+  font-weight: 600;
   transition: var(--transition);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  gap: 0.5rem;
 }
 
 .btn:hover {
   background-color: #0891b2;
   opacity: 1;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+.btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 /* Experience Section */
@@ -420,13 +460,13 @@ footer {
   width: 100%;
   max-width: 800px;
   margin: 0 auto;
-  overflow: hidden;
+  overflow: visible; /* Changed from hidden to visible to prevent clipping */
 }
 
 .testimonial-container {
   position: relative;
-  min-height: 250px; /* Changed from fixed height to minimum height */
-  padding: 20px 0; /* Add padding to container */
+  min-height: 250px;
+  padding: 20px 0;
 }
 
 .testimonial {
@@ -437,25 +477,25 @@ footer {
   transition: all 0.5s ease-in-out;
   text-align: center;
   padding: 20px;
-  height: auto; /* Allow height to adjust to content */
-  display: none; /* Hide all testimonials by default */
+  height: auto;
+  display: none;
 }
 
 .testimonial.active {
   opacity: 1;
   transform: translateX(0);
-  display: block; /* Show only active testimonial */
+  display: block;
 }
 
 .testimonial-text {
-  font-size: 1rem; /* Reduced from 1.2rem for better fit */
+  font-size: 1rem;
   font-style: italic;
   color: var(--primary);
   margin-bottom: 1.5rem;
   position: relative;
-  max-height: none; /* Remove any height constraints */
-  overflow: visible; /* Ensure content is not cut off */
-  line-height: 1.6; /* Better line height for readability */
+  max-height: none;
+  overflow: visible;
+  line-height: 1.6;
 }
 
 .testimonial-text::before,
@@ -565,14 +605,18 @@ footer {
   }
 
   .skills-container {
-    flex-direction: row; /* Keep horizontal layout on mobile */
-    overflow-x: auto; /* Allow horizontal scrolling if needed */
-    padding-bottom: 1rem; /* Space for scrollbar */
+    flex-direction: column; /* Change to column layout on mobile */
+    overflow-x: visible; /* Remove horizontal scrolling */
+    padding-bottom: 0; /* Remove extra padding for scrollbar */
+    align-items: center; /* Center items horizontally */
+    gap: 2rem; /* Increase gap between cards */
   }
 
   .skill-category {
-    flex: 0 0 auto; /* Don't grow, don't shrink, use specified width */
-    width: 220px; /* Fixed width for mobile */
+    flex: none; /* Remove flex growth */
+    width: 100%; /* Take full width of container */
+    max-width: 90%; /* Slightly less than full width for visual spacing */
+    margin-bottom: 1.5rem; /* Add bottom margin for spacing */
   }
 
   .projects-grid {
@@ -581,23 +625,91 @@ footer {
 
   #about {
     height: auto; /* Adjust height for mobile */
+    min-height: 400px; /* Ensure minimum height on mobile */
   }
 
   #about .section-content {
     padding-left: 15px;
     padding-right: 15px;
+    z-index: 2; /* Ensure content stays above overlay */
   }
 
   .banner-overlay {
-    display: none; /* Remove overlay on mobile */
+    /* Keep the overlay visible on mobile */
+    background-color: rgba(
+      15,
+      23,
+      42,
+      0.8
+    ); /* Slightly darker for better readability on small screens */
+  }
+
+  #about h1,
+  #about h2,
+  #about .typewriter-container,
+  #about .social-links {
+    position: relative;
+    z-index: 3; /* Ensure text is above the overlay */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Stronger text shadow for better readability */
+  }
+
+  .testimonial-carousel {
+    overflow: visible;
+    margin-bottom: 30px; /* Add space at bottom for dots */
   }
 
   .testimonial-container {
-    min-height: 200px; /* Adjust minimum height for mobile */
+    position: relative;
+    height: auto; /* Allow container to grow based on content */
+    min-height: unset; /* Remove min-height constraint */
+    margin-bottom: 30px; /* Space for dots */
+  }
+
+  .testimonial {
+    position: relative; /* Change from absolute to relative positioning on mobile */
+    height: auto;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+
+  .testimonial.active {
+    display: block;
+    transform: none; /* No transform needed with relative positioning */
   }
 
   .testimonial-text {
-    font-size: 0.9rem; /* Smaller font on mobile */
-    line-height: 1.5; /* Tighter line height on mobile */
+    font-size: 0.85rem;
+    line-height: 1.5;
+    padding: 0 5px; /* Smaller horizontal padding */
+    margin-bottom: 1rem;
+  }
+
+  .testimonial-text::before,
+  .testimonial-text::after {
+    font-size: 1.5rem; /* Smaller quote marks */
+  }
+
+  .testimonial-text::before {
+    left: -10px;
+    top: -5px;
+  }
+
+  .testimonial-text::after {
+    right: -10px;
+    bottom: -15px;
+  }
+
+  .testimonial-dots {
+    position: relative;
+    bottom: 0;
+    padding-top: 0; /* Remove extra padding */
+  }
+
+  .author-name {
+    font-size: 0.9rem;
+  }
+
+  .author-title {
+    font-size: 0.8rem;
   }
 }
