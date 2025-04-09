@@ -145,4 +145,75 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Initial check for page load position
   handleBannerOnScroll();
+
+  // Testimonials carousel functionality
+  const testimonials = document.querySelectorAll(".testimonial");
+  const dots = document.querySelectorAll(".dot");
+  let currentTestimonial = 0;
+  const testimonialInterval = 5000; // Change testimonial every 5 seconds
+
+  function showTestimonial(index) {
+    // Hide all testimonials
+    testimonials.forEach((testimonial) => {
+      testimonial.classList.remove("active");
+    });
+
+    // Remove active class from all dots
+    dots.forEach((dot) => {
+      dot.classList.remove("active");
+    });
+
+    // Show the selected testimonial and activate its dot
+    testimonials[index].classList.add("active");
+    dots[index].classList.add("active");
+
+    // Update current testimonial index
+    currentTestimonial = index;
+  }
+
+  // Auto rotate through testimonials
+  function rotateTestimonials() {
+    currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+    showTestimonial(currentTestimonial);
+  }
+
+  // Set up click events for dots
+  dots.forEach((dot, index) => {
+    dot.addEventListener("click", () => {
+      showTestimonial(index);
+      // Reset the interval when manually changing testimonials
+      clearInterval(testimonialRotation);
+      testimonialRotation = setInterval(
+        rotateTestimonials,
+        testimonialInterval
+      );
+    });
+  });
+
+  // Start the testimonial rotation
+  let testimonialRotation = setInterval(
+    rotateTestimonials,
+    testimonialInterval
+  );
+
+  // Pause rotation when hovering over testimonials
+  const testimonialCarousel = document.querySelector(".testimonial-carousel");
+  if (testimonialCarousel) {
+    testimonialCarousel.addEventListener("mouseenter", () => {
+      clearInterval(testimonialRotation);
+    });
+
+    // Resume rotation when mouse leaves
+    testimonialCarousel.addEventListener("mouseleave", () => {
+      testimonialRotation = setInterval(
+        rotateTestimonials,
+        testimonialInterval
+      );
+    });
+  }
+
+  // Initialize the first testimonial
+  if (testimonials.length > 0) {
+    showTestimonial(0);
+  }
 });
