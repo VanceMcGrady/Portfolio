@@ -175,6 +175,7 @@ p {
 #about {
   padding-top: 4rem; /* Restore some padding now that we have the banner as background */
   padding-bottom: 4rem;
+
   position: relative;
   min-height: 500px; /* Set minimum height for the about section */
   background-image: url("./assets/banner-image.jpeg");
@@ -477,6 +478,11 @@ footer {
 
   #about {
     height: auto; /* Adjust height for mobile */
+  }
+
+  #about .section-content {
+    padding-left: 15px;
+    padding-right: 15px;
   }
 
   .banner-overlay {
