@@ -150,7 +150,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const testimonials = document.querySelectorAll(".testimonial");
   const dots = document.querySelectorAll(".dot");
   let currentTestimonial = 0;
-  const testimonialInterval = 5000; // Change testimonial every 5 seconds
+  const testimonialInterval = 10000; // Change testimonial every 5 seconds
 
   function showTestimonial(index) {
     // Hide all testimonials
