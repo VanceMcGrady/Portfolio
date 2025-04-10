@@ -175,7 +175,7 @@ p {
 #about {
   padding-top: 4rem; /* Restore some padding now that we have the banner as background */
   padding-bottom: 4rem;
-
+  margin-top: 5rem;
   position: relative;
   min-height: 500px; /* Set minimum height for the about section */
   background-image: url("./assets/banner-image.jpeg");
@@ -311,7 +311,6 @@ p {
   height: 3em; /* Fixed height for title, approximately 2-3 lines */
   overflow: hidden;
   display: -webkit-box;
-  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
 }
 
