@@ -535,16 +535,23 @@ footer {
   justify-content: center;
   margin-top: 1rem;
   padding-top: 1rem;
+  position: relative;
+  z-index: 10; /* Ensure dots are on top of other elements */
 }
 
 .dot {
-  width: 10px;
-  height: 10px;
+  width: 12px; /* Slightly larger */
+  height: 12px; /* Slightly larger */
   background-color: #cbd5e1;
   border-radius: 50%;
   margin: 0 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  position: relative; /* Add position */
+  z-index: 15; /* Ensure dots are clickable */
+  padding: 6px; /* Add padding to increase clickable area */
+  box-sizing: content-box; /* Ensure padding doesn't affect size */
+  border: none; /* Remove any borders */
 }
 
 .dot.active {

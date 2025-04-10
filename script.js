@@ -150,7 +150,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const testimonials = document.querySelectorAll(".testimonial");
   const dots = document.querySelectorAll(".dot");
   let currentTestimonial = 0;
-  const testimonialInterval = 10000; // Change testimonial every 5 seconds
+  const testimonialInterval = 10000; // Change testimonial every 10 seconds
 
   function showTestimonial(index) {
     // Hide all testimonials
@@ -177,18 +177,25 @@ document.addEventListener("DOMContentLoaded", () => {
     showTestimonial(currentTestimonial);
   }
 
-  // Set up click events for dots
-  dots.forEach((dot, index) => {
-    dot.addEventListener("click", () => {
-      showTestimonial(index);
-      // Reset the interval when manually changing testimonials
-      clearInterval(testimonialRotation);
-      testimonialRotation = setInterval(
-        rotateTestimonials,
-        testimonialInterval
-      );
-    });
-  });
+  // Set up click events for dots - fixed to prevent multiple intervals
+  if (dots.length > 0) {
+    for (let i = 0; i < dots.length; i++) {
+      dots[i].onclick = function () {
+        // Stop the current rotation
+        clearInterval(testimonialRotation);
+        testimonialRotation = null;
+
+        // Show the selected testimonial
+        showTestimonial(i);
+
+        // Create a new interval with proper timing
+        testimonialRotation = setInterval(
+          rotateTestimonials,
+          testimonialInterval
+        );
+      };
+    }
+  }
 
   // Start the testimonial rotation
   let testimonialRotation = setInterval(
@@ -200,15 +207,20 @@ document.addEventListener("DOMContentLoaded", () => {
   const testimonialCarousel = document.querySelector(".testimonial-carousel");
   if (testimonialCarousel) {
     testimonialCarousel.addEventListener("mouseenter", () => {
+      // Clear interval and set to null when mouse enters
       clearInterval(testimonialRotation);
+      testimonialRotation = null;
     });
 
     // Resume rotation when mouse leaves
     testimonialCarousel.addEventListener("mouseleave", () => {
-      testimonialRotation = setInterval(
-        rotateTestimonials,
-        testimonialInterval
-      );
+      // Only create new interval if none exists
+      if (!testimonialRotation) {
+        testimonialRotation = setInterval(
+          rotateTestimonials,
+          testimonialInterval
+        );
+      }
     });
   }
 
