@@ -398,7 +398,7 @@ p {
 .timeline-item:before {
   content: "";
   position: absolute;
-  left: -2.5rem; /* Changed from -2rem to -2.5rem */
+  left: -2rem; /* Changed from -2rem to -2.5rem */
   top: 0.5rem;
   width: 12px;
   height: 12px;
