@@ -413,6 +413,20 @@ p {
   margin-bottom: 0.5rem;
 }
 
+.timeline-content ul {
+  margin: 0.35rem 0 0;
+  padding-left: 1.25rem;
+  line-height: 1.55;
+}
+
+.timeline-content li {
+  margin-bottom: 0.5rem;
+}
+
+.timeline-content li:last-child {
+  margin-bottom: 0;
+}
+
 /* Contact Section */
 .contact-btn {
   margin-top: 1.5rem;
