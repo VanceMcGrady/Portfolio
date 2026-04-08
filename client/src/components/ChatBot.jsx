@@ -9,6 +9,8 @@ export default function ChatBot() {
   const [isOpen, setIsOpen] = useState(false)
   const [messages, setMessages] = useState([WELCOME_MESSAGE])
   const [input, setInput] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState(null)
   const messagesEndRef = useRef(null)
 
   useEffect(() => {
@@ -17,12 +19,38 @@ export default function ChatBot() {
     }
   }, [messages, isOpen])
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     const trimmed = input.trim()
-    if (!trimmed) return
-    setMessages((prev) => [...prev, { role: 'user', text: trimmed }])
+    if (!trimmed || isLoading) return
+
+    const userMessage = { role: 'user', text: trimmed }
+    const updatedMessages = [...messages, userMessage]
+    setMessages(updatedMessages)
     setInput('')
+    setIsLoading(true)
+    setError(null)
+
+    try {
+      const res = await fetch('http://localhost:5000/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          messages: updatedMessages
+            .filter((m) => m.role !== 'assistant' || m !== WELCOME_MESSAGE)
+            .map((m) => ({ role: m.role, content: m.text })),
+        }),
+      })
+
+      if (!res.ok) throw new Error(`Server error: ${res.status}`)
+
+      const data = await res.json()
+      setMessages((prev) => [...prev, { role: 'assistant', text: data.reply }])
+    } catch (err) {
+      setError('Something went wrong. Please try again.')
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   return (
@@ -48,6 +76,14 @@ export default function ChatBot() {
                 {msg.text}
               </div>
             ))}
+            {isLoading && (
+              <div className="chatbot-message chatbot-message--assistant chatbot-message--loading">
+                <span></span><span></span><span></span>
+              </div>
+            )}
+            {error && (
+              <div className="chatbot-message chatbot-message--error">{error}</div>
+            )}
             <div ref={messagesEndRef} />
           </div>
 
@@ -58,9 +94,15 @@ export default function ChatBot() {
               placeholder="Type a message..."
               value={input}
               onChange={(e) => setInput(e.target.value)}
+              disabled={isLoading}
               autoFocus
             />
-            <button type="submit" className="chatbot-send" aria-label="Send">
+            <button
+              type="submit"
+              className="chatbot-send"
+              aria-label="Send"
+              disabled={isLoading}
+            >
               <i className="fas fa-paper-plane"></i>
             </button>
           </form>
