@@ -5,6 +5,7 @@ import Skills from './components/Skills'
 import Projects from './components/Projects'
 import Experience from './components/Experience'
 import Contact from './components/Contact'
+import ChatBot from './components/ChatBot'
 import './App.css'
 
 export default function App() {
@@ -22,6 +23,7 @@ export default function App() {
           <p>&copy; 2023 Vance McGrady. All rights reserved.</p>
         </footer>
       </div>
+      <ChatBot />
     </>
   )
 }
