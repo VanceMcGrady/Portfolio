@@ -858,6 +858,30 @@ footer {
   border-bottom-right-radius: 4px;
 }
 
+.chatbot-message p {
+  margin-bottom: 0.4rem;
+  color: inherit;
+}
+
+.chatbot-message p:last-child {
+  margin-bottom: 0;
+}
+
+.chatbot-message ul,
+.chatbot-message ol {
+  padding-left: 1.2rem;
+  margin: 0.3rem 0;
+  list-style: disc;
+}
+
+.chatbot-message li {
+  margin-bottom: 0.2rem;
+}
+
+.chatbot-message strong {
+  font-weight: 600;
+}
+
 .chatbot-message--error {
   background-color: #fee2e2;
   color: #b91c1c;

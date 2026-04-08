@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
+import ReactMarkdown from 'react-markdown'
 
 const WELCOME_MESSAGE = {
   role: 'assistant',
@@ -73,7 +74,7 @@ export default function ChatBot() {
           <div className="chatbot-messages">
             {messages.map((msg, i) => (
               <div key={i} className={`chatbot-message chatbot-message--${msg.role}`}>
-                {msg.text}
+                <ReactMarkdown>{msg.text}</ReactMarkdown>
               </div>
             ))}
             {isLoading && (
