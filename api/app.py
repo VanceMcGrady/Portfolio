@@ -3,6 +3,7 @@ from flask import Flask, jsonify, request
 from flask_cors import CORS
 from dotenv import load_dotenv
 import anthropic
+from system_prompt import SYSTEM_PROMPT
 
 load_dotenv()
 
@@ -33,6 +34,7 @@ def chat():
     response = client.messages.create(
         model="claude-opus-4-6",
         max_tokens=1024,
+        system=SYSTEM_PROMPT,
         messages=messages,
     )
 
