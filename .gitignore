@@ -1,0 +1,10 @@
+# Frontend
+client/node_modules/
+client/dist/
+
+# API
+api/.env
+api/__pycache__/
+api/*.pyc
+api/venv/
+api/.venv/
