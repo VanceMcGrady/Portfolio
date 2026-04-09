@@ -6,6 +6,9 @@ from flask import Flask, jsonify, request
 from flask_cors import CORS
 from dotenv import load_dotenv
 import anthropic
+import sys
+import os
+sys.path.insert(0, os.path.dirname(__file__))
 from system_prompt import SYSTEM_PROMPT
 
 load_dotenv()
