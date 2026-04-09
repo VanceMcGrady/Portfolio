@@ -1,6 +1,8 @@
 # Frontend
 client/node_modules/
 client/dist/
+client/.env.development
+client/.env.production
 
 # API
 api/.env
