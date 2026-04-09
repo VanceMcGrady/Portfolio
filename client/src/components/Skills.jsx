@@ -3,15 +3,17 @@ import { useScrollReveal } from '../hooks/useScrollReveal'
 const skillCategories = [
   {
     title: 'Frontend',
-    skills: ['JavaScript (TypeScript)', 'React', 'Angular', 'Svelte', 'HTML5 / CSS3', 'Next.js'],
+    skills: ['JavaScript/TypeScript', 'React', 'Angular', 'Svelte', 'HTML5 / CSS3', 'Next.js'],
   },
   {
     title: 'Backend',
     skills: [
       'Node.js / Express',
       'Python / R Data Services',
+      'Java / Spring Boot',
       'SQL / Relational Databases',
       'RESTful APIs',
+      'GraphQL',
       'System Architecture',
     ],
   },

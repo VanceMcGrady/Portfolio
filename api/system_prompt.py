@@ -41,7 +41,7 @@ Vance McGrady is a software engineer and web consultant based in the US. He spec
 ## Skills
 
 **Frontend:** JavaScript, TypeScript, React, Angular, Svelte, HTML5, CSS3, Next.js
-**Backend:** Node.js, Express, Python, R, SQL, RESTful APIs, System Architecture, Java, Spring Boot
+**Backend:** Node.js, Express, Python, R, Java, Spring Boot, SQL, RESTful APIs, GraphQL, System Architecture
 **DevOps & Tools:** AWS, GCP, Docker, Kubernetes, CI/CD Pipelines, Git, GitHub
 
 ---
